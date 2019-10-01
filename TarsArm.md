@@ -26,5 +26,8 @@ The following files are modified to make tars support tars platform.
 # 4. <a id="main-chapter-2"></a> Compilation
 Compile the Tars via the following commands:
 
+Download Code：
+git clone -b arm https://github.com/qiuxin/Tars.git
+
 
 
