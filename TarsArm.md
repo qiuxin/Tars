@@ -25,9 +25,15 @@ The following files are modified to make tars support tars platform.
 
 # 4. <a id="main-chapter-2"></a> Compilation
 Compile the Tars via the following commands:
+Step1: git clone -b arm https://github.com/qiuxin/Tars.git
+Step2: git checkout arm
+Step3: cd $Download_Path/Tars/armcompile
+Step4: ./basic_soft_install.sh
+Step5: ./install_mysql_57.sh
+Step6: ./install_nvm.sh
+Step7:
 
-Download Code：
-git clone -b arm https://github.com/qiuxin/Tars.git
+
 
 
 
