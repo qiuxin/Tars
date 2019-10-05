@@ -21,8 +21,16 @@ Test based on the followiing hardware:
 
 # 3. <a id="main-chapter-2"></a>File Update
 The following files are modified to make tars support tars platform.
-/Tars/framework/TarsCpp/servant/libservant/AdapterProxy.cpp
+/TarsCpp/util/include/util/tc_atomic.h
+/TarsCpp/util/include/util/tc_fcontext.h
+/TarsCpp/util/include/util/tc_timeprovider.h
+/TarsCpp/util/src/CMakeLists.txt
+/TarsCpp/util/src/tc_timeprovider.cpp
 
+add new file: 
+/TarsCpp/util/include/util/tc_fcontext_aarch64.h
+/TarsCpp/util/src/tc_jump_aarch64_sysv_elf_gas.s
+/TarsCpp/util/src/tc_make_aarch64_sysv_elf_gas.s
 
 # 4. <a id="main-chapter-2"></a> Compilation
 Compile the Tars via the following commands:
