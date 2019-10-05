@@ -33,7 +33,7 @@ The following files are modified to make tars support tars platform.
 -  /TarsCpp/util/src/tc_jump_aarch64_sysv_elf_gas.s
 -  /TarsCpp/util/src/tc_make_aarch64_sysv_elf_gas.s
 
-# 5. <a id="main-chapter-2"></a> Compplie Instruction
+# 5. <a id="main-chapter-2"></a> Complie Instruction
 Compile the Tars via the following commands:
 -  Step1: git clone -b arm https://github.com/qiuxin/Tars.git
 -  Step2: git checkout arm
