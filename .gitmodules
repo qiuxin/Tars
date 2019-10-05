@@ -1,6 +1,6 @@
 [submodule "framework"]
 	path = framework
-	url = https://github.com/TarsCloud/TarsFramework
+	url = https://github.com/qiuxin/TarsFramework
 [submodule "cpp"]
 	path = cpp
 	url = https://github.com/TarsCloud/TarsCpp
