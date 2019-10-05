@@ -1,8 +1,9 @@
 # 目录
 > * [1.In general](#main-chapter-1)
 > * [2.Test Environment](#main-chapter-2)
-> * [3.File Updates](#main-chapter-3)
-> * [4.Compilation](#main-chapter-4)
+> * [3.File Update for Arm Compile](#main-chapter-3)
+> * [4.Create New File for Arm Compile](#main-chapter-4)
+> * [5.Compplie Instruction](#main-chapter-4)
 
 # 1. <a id="main-chapter-1"></a>In general
 -  This page is used to distribute the new support for arm platform.
@@ -19,7 +20,7 @@ Test based on the followiing hardware:
 -  -  1x IPMI / Lights-out Management
 
 
-# 3. <a id="main-chapter-2"></a>File Update
+# 3. <a id="main-chapter-2"></a>File Update for Arm Compile
 The following files are modified to make tars support tars platform.
 -  /TarsCpp/util/include/util/tc_atomic.h
 -  /TarsCpp/util/include/util/tc_fcontext.h
@@ -27,12 +28,12 @@ The following files are modified to make tars support tars platform.
 -  /TarsCpp/util/src/CMakeLists.txt
 -  /TarsCpp/util/src/tc_timeprovider.cpp
 
-add new file: 
+# 4. <a id="main-chapter-2"></a>Create New File for Arm Compile
 -  /TarsCpp/util/include/util/tc_fcontext_aarch64.h
 -  /TarsCpp/util/src/tc_jump_aarch64_sysv_elf_gas.s
 -  /TarsCpp/util/src/tc_make_aarch64_sysv_elf_gas.s
 
-# 4. <a id="main-chapter-2"></a> Compilation
+# 5. <a id="main-chapter-2"></a> Compplie Instruction
 Compile the Tars via the following commands:
 -  Step1: git clone -b arm https://github.com/qiuxin/Tars.git
 -  Step2: git checkout arm
