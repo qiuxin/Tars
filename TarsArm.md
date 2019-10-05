@@ -21,6 +21,7 @@ Test based on the followiing hardware:
 
 # 3. <a id="main-chapter-2"></a>File Update
 The following files are modified to make tars support tars platform.
+/Tars/framework/TarsCpp/servant/libservant/AdapterProxy.cpp
 
 
 # 4. <a id="main-chapter-2"></a> Compilation
