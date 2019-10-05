@@ -27,11 +27,13 @@ The following files are modified to make tars support tars platform.
 Compile the Tars via the following commands:
 -  Step1: git clone -b arm https://github.com/qiuxin/Tars.git
 -  Step2: git checkout arm
--  Step3: cd $Download_Path/Tars/armcompile
--  Step4: ./basic_soft_install.sh
--  Step5: ./install_mysql_57.sh
--  Step6: ./install_nvm.sh
--  Step7: Run the following command:
+-  Step3: cd tars
+-  Step4: git submodule update --init --recursive
+-  Step5: cd $Download_Path/Tars/armcompile
+-  Step6: ./basic_soft_install.sh
+-  Step7: ./install_mysql_57.sh
+-  Step8: ./install_nvm.sh
+-  Step9: Run the following command:
 ```
 cd $Download_Path/Tars/framework
 find . -name 'CMakeLists.txt' | xargs perl -pi -e 's|/usr/local/mysql/include|/usr/include/mysql|g'
