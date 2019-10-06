@@ -1,6 +1,7 @@
 [submodule "framework"]
 	path = framework
 	url = https://github.com/qiuxin/TarsFramework
+	branch = arm
 [submodule "cpp"]
 	path = cpp
 	url = https://github.com/TarsCloud/TarsCpp
