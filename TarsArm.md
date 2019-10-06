@@ -63,6 +63,7 @@ In the process of compiling tars code, you may encounter the following errors:
  #include "mysql.h"
 ```
 
+
 ```
 make[2]: *** No rule to make target `/usr/lib64/mysql/libmysqlclient.a', needed by `deploy/tarsconfig/bin/tarsconfig'.  Stop.
 make[1]: *** [ConfigServer/CMakeFiles/tarsconfig.dir/all] Error 2
@@ -70,6 +71,7 @@ make: *** [all] Error 2
 ```
 
 The way handing is that：
+
 Step1: Find the location of mysql.h and libmysqlclient.a via the following commands
 ```
 find / -name mysql.h
