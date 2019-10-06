@@ -1,4 +1,4 @@
-# 目录
+# Table of Contents
 > * [1.In general](#main-chapter-1)
 > * [2.Test Environment](#main-chapter-2)
 > * [3.File Update for Arm Compile](#main-chapter-3)
@@ -55,3 +55,45 @@ cd $Download_Path/Tars/framework/build
 ./build.sh all
 ```
 
+
+# 6. <a id="main-chapter-2"></a> Solve the Compile errors 
+In the process of compiling tars code, you may encounter the following errors:
+```
+/usr/local/robert/Tars/framework/tarscpp/util/include/util/tc_mysql.h:20:19: fatal error: mysql.h: No such file or directory
+ #include "mysql.h"
+```
+
+```
+make[2]: *** No rule to make target `/usr/lib64/mysql/libmysqlclient.a', needed by `deploy/tarsconfig/bin/tarsconfig'.  Stop.
+make[1]: *** [ConfigServer/CMakeFiles/tarsconfig.dir/all] Error 2
+make: *** [all] Error 2
+```
+
+The way handing is that：
+Step1: Find the location of mysql.h and libmysqlclient.a via the following commands
+```
+find / -name mysql.h
+find / -name libmysqlclient.a
+```
+
+Step2: Set the path whihc includes mysql.h and libmysqlclient.a to the following “CMakeLists.txt”
+
+Update the path of "/TarsFramework/tarscpp/CMakeLists.txt"
+```
+#set(MYSQL_DIR_INC "/usr/include/mysql")
+set(MYSQL_DIR_INC "/usr/local/mysql/include")
+
+#set(MYSQL_DIR_LIB "/usr/lib64/mysql")
+set(MYSQL_DIR_LIB "/usr/local/mysql/lib")
+```
+
+
+
+/TarsFramework/CMakeLists.txt
+```
+#set(MYSQL_DIR_INC "/usr/include/mysql")
+set(MYSQL_DIR_INC "/usr/local/mysql/include")
+
+#set(MYSQL_DIR_LIB "/usr/lib64/mysql")
+set(MYSQL_DIR_LIB "/usr/local/mysql/lib")
+```
