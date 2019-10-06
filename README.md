@@ -1,6 +1,10 @@
 # Tars
 This is the arm version.  The functions are completely the same as Tars X86.
  
+# The relationship between Arm and Mater(x86)
+![image](https://github.com/qiuxin/Tars/blob/arm/Picture/brach_relation.PNG)
+
+
 ## Compile and Installation 
 Refer to the [TarsArm.md](TarsArm.md).
 
