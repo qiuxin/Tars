@@ -1,5 +1,5 @@
 # Tars
-This is the arm version tar platform.  The funcion is completely the same as Tars run on X86.
+This is the arm version.  The functions are completely the same as Tars X86.
  
 ## Compile and Installation 
 Refer to the [TarsArm.md](TarsArm.md).
