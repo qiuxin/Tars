@@ -70,7 +70,7 @@ make[1]: *** [ConfigServer/CMakeFiles/tarsconfig.dir/all] Error 2
 make: *** [all] Error 2
 ```
 
-The way handing is that：
+The way handing the errors：
 
 Step1: Find the location of mysql.h and libmysqlclient.a via the following commands
 ```
@@ -80,7 +80,7 @@ find / -name libmysqlclient.a
 
 Step2: Set the path whihc includes mysql.h and libmysqlclient.a to the following “CMakeLists.txt”
 
-Update the path of "/TarsFramework/tarscpp/CMakeLists.txt"
+Update the path in the file  /TarsFramework/tarscpp/CMakeLists.txt
 ```
 #set(MYSQL_DIR_INC "/usr/include/mysql")
 set(MYSQL_DIR_INC "/usr/local/mysql/include")
@@ -90,8 +90,7 @@ set(MYSQL_DIR_LIB "/usr/local/mysql/lib")
 ```
 
 
-
-/TarsFramework/CMakeLists.txt
+Update the path in the file /TarsFramework/CMakeLists.txt
 ```
 #set(MYSQL_DIR_INC "/usr/include/mysql")
 set(MYSQL_DIR_INC "/usr/local/mysql/include")
@@ -99,3 +98,13 @@ set(MYSQL_DIR_INC "/usr/local/mysql/include")
 #set(MYSQL_DIR_LIB "/usr/lib64/mysql")
 set(MYSQL_DIR_LIB "/usr/local/mysql/lib")
 ```
+
+Step3: Compile again
+```
+cd Tars/framework/build
+./build.sh cleanall
+./build.sh all
+```
+
+
+
