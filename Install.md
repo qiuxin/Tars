@@ -75,7 +75,7 @@ make install
 ```
 Tars souce code can be compiled successfully after the foregoing mysql was installed successfully
 
-#### 4.2.1 Congfig Mysql
+#### 4.2.2 Congfig Mysql 
 Configure Mysql
 ```
 cd /usr/local/mysql  
@@ -121,8 +121,7 @@ read_rnd_buffer_size = 2M
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
 ```
 
-
-
+#### 4.2.3 Start Mysql
 
 After that, you can start mysql and stop mysql successfully.
 
@@ -138,7 +137,7 @@ service mysql stop
 ```  
 
 
-
+#### 4.2.4 Add Mysql lib
 
 Add the mysql lib in the conf file(/etc/ld.so.conf):
 ```
@@ -154,9 +153,7 @@ ldconfig
 ```
 
 
-
-
-Setup the environment path
+#### 4.2.5 Setup the environment path
 ```
 vim /etc/profile  
 ```
@@ -173,10 +170,6 @@ Check mysql verion to make sure everything goes well.
 ```
 mysql --version
 ```
-
-
-
-
 
 
 ## 5. <a id="chapter-5"></a> Install NVM
