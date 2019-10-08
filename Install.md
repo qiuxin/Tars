@@ -314,12 +314,12 @@ mysql -u root -proot@appinside
 Import datebases tables:
 ```
 use db_tars;
-source db_tars.sql"
-source tarslog.sql"
-source tarsstat.sql"
-source tarsproperty.sql"
-source tarsqueryproperty.sql"
-source tarsquerystat.sql"
+source db_tars.sql
+source tarslog.sql
+source tarsstat.sql
+source tarsproperty.sql
+source tarsqueryproperty.sql
+source tarsquerystat.sql
 ```
 
 
