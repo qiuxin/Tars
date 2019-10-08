@@ -134,6 +134,23 @@ Stop mysql
 service mysql stop  
 ```  
 
+
+Add the mysql lib in the conf file(/etc/ld.so.conf):
+```
+vim /etc/ld.so.conf  
+
+```
+add the following line
+```
+/usr/local/mysql/lib/  
+
+```
+then run
+```
+ldconfig  
+```
+
+
 Setup the environment path
 ```
 vim /etc/profile  
@@ -151,6 +168,11 @@ Check mysql verion to make sure everything goes well.
 ```
 mysql --version
 ```
+
+
+
+
+
 
 ## 5. <a id="chapter-5"></a> Install NVM
 
@@ -233,9 +255,16 @@ ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 ### 8.1 Mysql User and Password Setup
 
+Establish the new password for mysql
+```
+./bin/mysqladmin -u root password 'root@appinside'
+```
+
+
+
 Login Mysql:
 ```
-mysql -u root -p
+mysql -u root -proot@appinside
 
 ```
 
