@@ -9,7 +9,7 @@
 > * [Initialize Database](#chapter-8)  
 > * [Start TarsFramework Services](#chapter-9)  
 > * [Install Tarsweb](#chapter-10)  
-
+> * [Compile TarsFramework NoneCore Service](#chapter-11)  
 
 ## 1. <a id="chapter-1"></a> Note Well
 This document describes the steps to deploy, run, and test Tars framework.
@@ -384,31 +384,32 @@ Import the table
 ```
 use db_tars_web;
 source db_tars_web.sql
+exit
 ```
 
-
-
+### 10.4 pm2 start
 ```
-
 cd $CodePath/Tars/web/
 pm2 start 0
-echo "start tars web">>$CodePath/Tars/shellDeploy/deploy_log
-##关闭防火墙
-##shutdown firewall
+```
+
+### 10.5 shutdown firewall
+```
+shutdown firewall
 service firewalld status
 systemctl stop firewalld
 systemctl disable firewalld
-echo "shutdown and disable firewall">>$CodePath/Tars/shellDeploy/deploy_log
-##非框架核心服务编译和发布
-##None Core Service Compiple
-cd $CodePath/Tars/framework/build
+```
+
+## 11. <a id="chapter-11"></a> Compile TarsFramework NoneCore Service
+```
+cd ${download_path}/Tars/framework/build
 make tarsstat-tar
 make tarsnotify-tar
 make tarsproperty-tar
 make tarslog-tar
 make tarsquerystat-tar
 make tarsqueryproperty-tar
-echo "compile none-core services of framework">>$CodePath/Tars/shellDeploy/deploy_log
 ```
 
 
