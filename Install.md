@@ -1,5 +1,3 @@
-[点我查看中文版](Install.zh.md)  
-  
 # Content  
 > * [Note Well](#chapter-1)  
 > * [Environments](#chapter-2)  
@@ -9,6 +7,7 @@
 > * [Download and Compile TarsFramework](#chapter-6)
 > * [Install TarsFramework](#chapter-7) 
 > * [Initialize Database](#chapter-8)  
+> * [Start TarsFramework Services](#chapter-9)  
 
 
 ## 1. <a id="chapter-1"></a> Note Well
@@ -323,7 +322,7 @@ source tarsquerystat.sql
 ```
 
 
-### 8.4 Install Tars framework
+## 9. <a id="chapter-9"></a> Start TarsFramework Services
 Compile
 ```
 cd ${download_path}/Tars/framework/build
@@ -350,7 +349,7 @@ sed -i "s/web.tars.com/${MachineIp}/g" `grep web.tars.com -rl ./*`
 ${MachineIp} is the server's IP address which can grab via ifconfig. 
 
 
-Install framework
+Start Tarsframework Services
 ```
 cd /usr/local/app/tars/
 chmod u+x tars_install.sh
