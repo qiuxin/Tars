@@ -251,13 +251,13 @@ sed -i "s/10.120.129.226/${MachineIp}/g" `grep 10.120.129.226 -rl ./*`
 ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 
-### 8.1 Mysql User and Password Setup
+### 8.1 Setup User and Password
 
 Establish the new password for mysql
 ```
+/usr/local/mysql
 ./bin/mysqladmin -u root password 'root@appinside'
 ```
-
 
 
 Login Mysql:
@@ -267,9 +267,10 @@ mysql -u root -proot@appinside
 ```
 
 
-
 Setup User and Password:
 ```
+mysql> set global validate_password_policy=0;
+mysql> set global validate_password_length=1;
 mysql> set password="tars2015";
 mysql> grant all on *.* to 'tars'@'%' identified by 'tars2015' with grant option;
 mysql> grant all on *.* to 'tars'@'localhost' identified by 'tars2015' with grant option;
