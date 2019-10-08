@@ -150,6 +150,10 @@ mysql --version
 ```
 
 
+#### 4.2.1 Mysql User and Password Setup
+
+
+
 
 
 
