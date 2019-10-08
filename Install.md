@@ -260,13 +260,12 @@ skip-grant-tables
 
 restart mysql after you modify /usr/local/mysql/my.cnf
 ```
-service mysql stop
-service mysql start
+service mysql restart
 ```
 So no more user password check!  Pretty simeple for demo!
 
 
-### 8.1 Setup User and Password
+### 8.2 Setup User and Password(For real product)
 
 Establish the new password for mysql
 ```
@@ -282,9 +281,10 @@ mysql -u root -proot@appinside
 
 Setup User and Password:
 ```
-mysql> set global validate_password_policy=0; (NOT SUPPORT IN Mysql 5.6)
-mysql> set global validate_password_length=1; (NOT SUPPORT IN Mysql 5.6)
-mysql> set password="tars2015";
+mysql> install plugin validate_password soname 'validate_password.so';
+mysql> set global validate_password_policy=0; 
+mysql> set global validate_password_length=1; 
+mysql> set password="tars2015"; (Not work, SET old_passwords = 0,1,2; does not help! )
 mysql> grant all on *.* to 'tars'@'%' identified by 'tars2015' with grant option;
 mysql> grant all on *.* to 'tars'@'localhost' identified by 'tars2015' with grant option;
 mysql> flush privileges;
@@ -292,6 +292,11 @@ mysql> flush privileges;
 
 
 
+
+
+
+create user 'tars'@'%';
+create user 'tars'@'%' identified by 'tars2015';
 
 
 
