@@ -8,6 +8,7 @@
 > * [Install TarsFramework](#chapter-7) 
 > * [Initialize Database](#chapter-8)  
 > * [Start TarsFramework Services](#chapter-9)  
+> * [Install Tarsweb](#chapter-10)  
 
 
 ## 1. <a id="chapter-1"></a> Note Well
@@ -356,9 +357,44 @@ chmod u+x tars_install.sh
 ./tars_install.sh
 ```
 
+## 10. <a id="chapter-10"></a> Install TarsWeb
+### 10.1 Config Tarsweb database
+```
+cd ${download_path}/Tars/web/
+sed -i "s/db.tars.com/${MachineIp}/g" config/webConf.js
+sed -i "s/registry.tars.com/${MachineIp}/g" config/tars.conf
+```
+
+### 10.2 Install tarsweb software
+npm install --registry=https://registry.npm.taobao.org
+npm run prd
+
+
+### 10.3 Import mysql table
+cd $CodePath/Tars/web/sql
 
 
 
+
+cd $CodePath/Tars/web/
+pm2 start 0
+echo "start tars web">>$CodePath/Tars/shellDeploy/deploy_log
+##关闭防火墙
+##shutdown firewall
+service firewalld status
+systemctl stop firewalld
+systemctl disable firewalld
+echo "shutdown and disable firewall">>$CodePath/Tars/shellDeploy/deploy_log
+##非框架核心服务编译和发布
+##None Core Service Compiple
+cd $CodePath/Tars/framework/build
+make tarsstat-tar
+make tarsnotify-tar
+make tarsproperty-tar
+make tarslog-tar
+make tarsquerystat-tar
+make tarsqueryproperty-tar
+echo "compile none-core services of framework">>$CodePath/Tars/shellDeploy/deploy_log
 
 
 
