@@ -394,8 +394,8 @@ pm2 start 0
 ```
 
 ### 10.5 shutdown firewall
-```
 shutdown firewall
+```
 service firewalld status
 systemctl stop firewalld
 systemctl disable firewalld
