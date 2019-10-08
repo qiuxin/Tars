@@ -252,20 +252,8 @@ ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 
 
-### 8.1 Setup User and Password(The simplest way, demo recommend)
-add "skip-grant-tables"  in /usr/local/mysql/my.cnf file 
-```
-skip-grant-tables
-```
 
-restart mysql after you modify /usr/local/mysql/my.cnf
-```
-service mysql restart
-```
-So no more user password check!  Pretty simeple for demo!
-
-
-### 8.2 Setup User and Password(For real product)
+### 8.1 Setup User and Password
 
 Establish the new password for mysql
 ```
@@ -291,12 +279,28 @@ mysql> flush privileges;
 ```
 
 
+### 8.2 Create Datebase
+Login Mysql:
+```
+mysql -u root -proot@appinside
+```
+
+create datebases
+```
+create database db_tars;
+create database tars_stat;
+create database tars_property;
+create database db_tars_web;
+```
+
+check the datebases you created
+```
+show databases;
+```
 
 
+### 8.2 Create Datebase
 
-
-create user 'tars'@'%';
-create user 'tars'@'%' identified by 'tars2015';
 
 
 
