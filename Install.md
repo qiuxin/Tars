@@ -373,9 +373,17 @@ npm run prd
 
 
 ### 10.3 Import mysql table
-```
-cd $CodePath/Tars/web/sql
 
+Enter the folder and log in mysql
+```
+cd ${download_path}/Tars/web/sql
+mysql -u root -proot@appinside
+```
+
+Import the table
+```
+use db_tars_web;
+source db_tars_web.sql
 ```
 
 
