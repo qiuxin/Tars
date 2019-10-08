@@ -366,15 +366,21 @@ sed -i "s/registry.tars.com/${MachineIp}/g" config/tars.conf
 ```
 
 ### 10.2 Install tarsweb software
+```
 npm install --registry=https://registry.npm.taobao.org
 npm run prd
+```
 
 
 ### 10.3 Import mysql table
+```
 cd $CodePath/Tars/web/sql
 
+```
 
 
+
+```
 
 cd $CodePath/Tars/web/
 pm2 start 0
@@ -395,6 +401,7 @@ make tarslog-tar
 make tarsquerystat-tar
 make tarsqueryproperty-tar
 echo "compile none-core services of framework">>$CodePath/Tars/shellDeploy/deploy_log
+```
 
 
 
