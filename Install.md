@@ -335,6 +335,7 @@ mkdir tars
 chown root:root ./tars/
 cd tars/
 cp ${download_path}/Tars/framework/build/framework.tgz /usr/local/app/tars/
+cd /usr/local/app/tars/
 tar -zxvf framework.tgz
 ```
 
