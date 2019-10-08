@@ -218,13 +218,21 @@ cd ${download_path}/Tars/framework/build/
 ```
 
 
-
-
-
 ## 8. <a id="chapter-8"></a> Initialize Datebase
 
+### 8.1 modify IP address
 
-### 7.1 Mysql User and Password Setup
+```
+cd ${download_path}/Tars/framework/sql
+sed -i "s/192.168.2.131/${MachineIp}/g" `grep 192.168.2.131 -rl ./*`
+sed -i "s/db.tars.com/${MachineIp}/g" `grep db.tars.com -rl ./*`
+sed -i "s/10.120.129.226/${MachineIp}/g" `grep 10.120.129.226 -rl ./*`
+
+```
+${MachineIp} is local IP address. Check IP address via ipconfig.
+
+
+### 8.1 Mysql User and Password Setup
 
 
 
