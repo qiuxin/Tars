@@ -2,7 +2,7 @@
   
 # Content  
 > * [Note Well](#chapter-1)  
-> * [Dependent Environments](#chapter-2)  
+> * [Environments](#chapter-2)  
 > * [Install Lib](#chapter-3)  
 > * [Install Mysql](#chapter-4)  
 > * [Build runtime environment for Tars framework](#chapter-4)  
@@ -14,21 +14,9 @@ This document describes the steps to deploy, run, and test Tars framework.
 This is the arm verion install process, some steps are different to X86 platform.
 Make sure you are run Tars on ARM platform prior to follow the instructions itemized below.  
   
-## 2. <a id="chapter-2"></a>Dependent environments   
-System : CentOS 7
-Software | Software requirements  
-------|--------  
-linux kernel version: | 2.6.18 or later (Dependent OS)  
-gcc version: | 4.8.2 or later、glibc-devel（Dependent c++ framework tools）  
-bison version: | 2.5 or later（Dependent c++ framework tools）  
-flex version: | 2.5 or later（Dependent c++ framework tools）  
-cmake version: | 2.8.8 or later（Dependent c++ framework tools）  
-mysql version: | 4.1.17 or later（dependency of framework running）  
-rapidjson version: | 1.0.2 or later（dependency of C++ framework）  
-nvm version: | 0.33.11 or later（Dependent web management system）  
-node version: | 8.11.3 or later（Dependent web management system）  
-  
-Hardware requirements: Arm Server with aarch64.  
+## 2. <a id="chapter-2"></a> Environments   
+System : CentOS 7  
+Hardware requirements: aarch64 Arm Server  
   
 ## 3. <a id="chapter-3"></a> Install Libs 
   
@@ -61,10 +49,92 @@ yum install -y lrzsz
 
 ## 4. <a id="chapter-3"></a> Install Mysql
 
+### 4.1 Version
+Only MYsql 5.6,5.7 are supported in Tars Platform.
+
 ### 4.1 Install mysql via yum
+Mysql 5.6, 5.7 yum installation are not supported by Oracle yet. It is not avaliale.
+
+### 4.2 Install mysql via source code
+So the only way to install mysql is source code.
+
+#### 4.2.1 Donwload/Install/Compile  
+Donwload/Install/Compile the source code of mysql5.6.
+```
+cd /usr/local
+wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz
+tar -zxvf mysql-5.6.26.tar.gz
+chown root:root ./mysql-5.6.26
+ln -s /usr/local/mysql-5.6.26 /usr/local/mysql
+cd mysql-5.6.26
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
+make
+make install
+```
+Tars souce code can be compiled successfully after the foregoing mysql was installed successfully
+
+#### 4.2.1 Congfig Mysql
+Configure Mysql
+```
+cd /usr/local/mysql  
+useradd mysql  
+rm -rf /usr/local/mysql/data  
+mkdir -p /data/mysql-data  
+ln -s /data/mysql-data /usr/local/mysql/data  
+chown -R mysql:mysql /data/mysql-data /usr/local/mysql/data  
+cp support-files/mysql.server /etc/init.d/mysql  
+yum install -y perl-Module-Install.noarch  
+perl scripts/mysql_install_db --user=mysql  
+
+```
 
 
-### 4.2 Install mysql via mysql  
+Update the parameters in /usr/local/mysql/my.cnf
+```
+[mysqld]  
+  
+# Remove leading # and set to the amount of RAM for the most important data  
+# cache in mysql. Start at 70% of total RAM for dedicated server, else 10%.  
+innodb_buffer_pool_size = 128M  
+  
+# Remove leading # to turn on a very important data integrity option: logging  
+# changes to the binary log between backups.  
+log_bin  
+  
+# These are commonly set, remove the # and set as required.  
+basedir = /usr/local/mysql  
+datadir = /usr/local/mysql/data  
+# port = .....  
+# server_id = .....  
+socket = /tmp/mysql.sock  
+  
+bind-address=${your machine ip}  
+  
+# Remove leading # to set options mainly useful for reporting servers.  
+# The server defaults are faster for transactions and fast SELECTs.  
+# Adjust sizes as needed, experiment to find the optimal values.  
+join_buffer_size = 128M  
+sort_buffer_size = 2M  
+read_rnd_buffer_size = 2M  
+  
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
+  
+```
+
+After that, you can start mysql and stop mysql successfully.
+
+Start mysql  
+```  sql
+service mysql start  
+chkconfig mysql on  
+```  
+Stop mysql  
+``` sql
+service mysql stop  
+```  
+
+
+
 
 
 
