@@ -121,6 +121,9 @@ read_rnd_buffer_size = 2M
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
 ```
 
+
+
+
 After that, you can start mysql and stop mysql successfully.
 
 Start mysql  
@@ -135,6 +138,8 @@ service mysql stop
 ```  
 
 
+
+
 Add the mysql lib in the conf file(/etc/ld.so.conf):
 ```
 vim /etc/ld.so.conf  
@@ -147,6 +152,8 @@ then run
 ```
 ldconfig  
 ```
+
+
 
 
 Setup the environment path
