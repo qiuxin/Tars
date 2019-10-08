@@ -131,221 +131,31 @@ Stop mysql
 service mysql stop  
 ```  
 
-
-
-
-
-
-  
-### 1.3. Install mysql  
-
-There are two ways to install mysql. One is via source code and the other one is via yum. Both procedures are described below.
-
-### 1.3.1 Install mysql via source code  
-This step installs mysql via source code in order to set up configurations manually.  
-
-Before installation, check whether ncurses and zlib have been installed. Execute these commands if not exist:  
-```  bash
-yum install ncurses-devel  
-yum install zlib-devel  
-```  
-  
-set the installation directory, switch to user root.  
-```  bash
-cd /usr/local  
-mkdir mysql-5.6.26  
-chown ${normal user}:${normal user} ./mysql-5.6.26  
-ln -s /usr/local/mysql-5.6.26 /usr/local/mysql  
-```  
-  
-Download mysql source (mysql-5.6.26), set charset to utf-8.  
-```  bash
-cd ${mysql_folder}  
-wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz  
-tar -zxvf mysql-5.6.26.tar.gz  
-cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci  
-make  
-make install  
-```  
-  
-**Attention: If you use C++ to develop Tars service, please compile mysql as static library.**  
-  
-Now you can compile Tars framework of C++ version.  
-  
-If you need build runtime environment for Tars framework, pelease switch to mysql administrator user and config mysql with following steps:  
-```bash  
-yum install perl  
-cd /usr/local/mysql  
-useradd mysql  
-rm -rf /usr/local/mysql/data  
-mkdir -p /data/mysql-data  
-ln -s /data/mysql-data /usr/local/mysql/data  
-chown -R mysql:mysql /data/mysql-data /usr/local/mysql/data  
-cp support-files/mysql.server /etc/init.d/mysql  
-yum install -y perl-Module-Install.noarch  
-perl scripts/mysql_install_db --user=mysql  
-vim /usr/local/mysql/my.cnf  
-```  
-Here is an example of my.cnf:  
-**Tips: As the system will load /etc/  
-rm -rf /etc/my.cnf  
-my.cnf first,you may delect the /etc/my.cnf or copy the essential information from the following example and paste to /ect/my.cnf. Otherwise it will not work.  
-  
-```bash  
-[mysqld]  
-  
-# Remove leading # and set to the amount of RAM for the most important data  
-# cache in mysql. Start at 70% of total RAM for dedicated server, else 10%.  
-innodb_buffer_pool_size = 128M  
-  
-# Remove leading # to turn on a very important data integrity option: logging  
-# changes to the binary log between backups.  
-log_bin  
-  
-# These are commonly set, remove the # and set as required.  
-basedir = /usr/local/mysql  
-datadir = /usr/local/mysql/data  
-# port = .....  
-# server_id = .....  
-socket = /tmp/mysql.sock  
-  
-bind-address=${your machine ip}  
-  
-# Remove leading # to set options mainly useful for reporting servers.  
-# The server defaults are faster for transactions and fast SELECTs.  
-# Adjust sizes as needed, experiment to find the optimal values.  
-join_buffer_size = 128M  
-sort_buffer_size = 2M  
-read_rnd_buffer_size = 2M  
-  
-sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
-  
-```  
-Start mysql  
-```  sql
-service mysql start  
-chkconfig mysql on  
-```  
-Stop mysql  
-``` sql
-service mysql stop  
-```  
-Add mysql execution path to environment variable for path.  
-``` bash 
+Setup the environment path
+```
 vim /etc/profile  
+```
+Add the following path to /etc/profile  
+```
 PATH=$PATH:/usr/local/mysql/bin  
 export PATH  
-```  
-Modify root's password  
-```  bash
-./bin/mysqladmin -u root password 'root@appinside'  
-./bin/mysqladmin -u root -h ${hostname} password 'root@appinside'  
-```  
-  
-  
-Add mysql dynamic library path to environment variable for path.  
-```  bash
-vim /etc/ld.so.conf  
-/usr/local/mysql/lib/  
-ldconfig  
-```  
-========================  
-  
-The master-slave configuration for mysql can be found in the Internet.  
-  
-Grant authority to master  
-```  sql
-GRANT REPLICATION SLAVE ON *.* to 'mysql-sync'@'%' identified by 'sync@appinside'  
-```  
-Configure slave for replication:  
-```  bash
-change master to master_host='${slave Ip}',master_user='mysql-sync',master_password='sync@appinside' ,master_log_file='iZ94orl0ix4Z-bin.000004',master_log_pos=611;  
-stop slave  
-start slave  
-show master status\G;  
-show slave status\G;  
-```  
-  
-### 1.3.2 Install mysql via yum  
-This step allows you to download the mysql official yum repository.
-  
-The install scripts named mysql_install_db.sh included in version 5.6 have been deleted after version 5.7. Therefore, here comes the yum installation.  
+```
+then run
+```
+source
+```
+Check the verion to make sure everything goes well. 
+```
+mysql --version
+```
 
-The installation via yum is an easier way but with that you cannot adjust configs manually. If that is not what you want, the source code method is recommended.  
 
-You can download mysql using wget. Below is an example downloading version 5.7, but you can change it to the desired version.
-```  bash
-wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm  
-yum -y install mysql57-community-release-el7-10.noarch.rpm  
-yum -y install mysql-community-server  
-yum -y install mysql-devel  
-```  
-If you have problems to install mysql with the above step, add the new mysql repository to local server with this yum command and then re-run the previous commands.  
 
-```  bash
-sudo yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm  
-```  
-### 1.3.2.1 Configure mysql  
 
-After installing mysql, start and check its status.  
-  
-```  sql
-systemctl start mysqld.service  
-systemctl status mysqld.service  
-```  
-  
-mysql started and it's using port 3306 for the connection.  
-  
-Configure the mysql root password. mysql will generate a strong default password when it is started for the first time. The default password is shown in mysqld.log file. You can use the grep command below for showing the default mysql password.  
-  
-```  bash
-grep "password" /var/log/mysqld.log  
-```  
-  
-Connect to the mysql shell with the default password.  
 
-You can't operate until changing the password. If your mysql version is later than 5.7, there are two ways to configure the strong password rules as follows:  
 
-1. Set up a strong password  
-2. Change the password rules as follows  
-   
-```  bash
-set global validate_password_policy=0;  
-set global validate_password_length=1;  
-```  
 
-Now replace the default password with a new password with a six-character minimum restriction.  
 
-```  sql
-ALTER USER 'root'@'localhost' IDENTIFIED BY '${your passwd}';  
-flush privileges;  
-```  
-  
-# 2. <a id="chapter-2"></a>Install develop environment for Tars  
-## 2.1. Install develop environment for web management system  
-
-For Linux：  
-  
-Install npm,pm2
-
-```  bash
-yum install -y npm
-npm i -g pm2
-``` 
-
-Nvm script installation is provided by the official website. Execute the following command:  
-
-```  bash
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash  
-source ~/.bashrc  
-```  
-  
-Install node and process manager pm2 for node applications with load function:  
-```  bash
-nvm install v8.11.3  
-npm install -g pm2 --registry=https://registry.npm.taobao.org  
-```  
-  
 
 ## 2.2. Install develop environment for C++  
 
