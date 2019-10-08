@@ -227,12 +227,28 @@ cd ${download_path}/Tars/framework/sql
 sed -i "s/192.168.2.131/${MachineIp}/g" `grep 192.168.2.131 -rl ./*`
 sed -i "s/db.tars.com/${MachineIp}/g" `grep db.tars.com -rl ./*`
 sed -i "s/10.120.129.226/${MachineIp}/g" `grep 10.120.129.226 -rl ./*`
-
 ```
 ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 
 ### 8.1 Mysql User and Password Setup
+
+Login Mysql:
+```
+mysql -u root -p
+
+```
+
+
+
+Setup User and Password:
+```
+mysql> set password="tars2015";
+mysql> grant all on *.* to 'tars'@'%' identified by 'tars2015' with grant option;
+mysql> grant all on *.* to 'tars'@'localhost' identified by 'tars2015' with grant option;
+mysql> flush privileges;
+```
+
 
 
 
