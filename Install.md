@@ -144,7 +144,7 @@ then run
 ```
 source
 ```
-Check the verion to make sure everything goes well. 
+Check mysql verion to make sure everything goes well. 
 ```
 mysql --version
 ```
