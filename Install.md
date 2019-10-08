@@ -341,6 +341,7 @@ tar -zxvf framework.tgz
 
 Replace the IP adress
 ```
+cd /usr/local/app/tars
 sed -i "s/192.168.2.131/${MachineIp}/g" `grep 192.168.2.131 -rl ./*`
 sed -i "s/db.tars.com/${MachineIp}/g" `grep db.tars.com -rl ./*`
 sed -i "s/registry.tars.com/${MachineIp}/g" `grep registry.tars.com -rl ./*`
