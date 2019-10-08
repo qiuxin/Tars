@@ -5,7 +5,9 @@
 > * [Environments](#chapter-2)  
 > * [Install Lib](#chapter-3)  
 > * [Install Mysql](#chapter-4)  
-> * [Build runtime environment for Tars framework](#chapter-4)  
+> * [Install NVM](#chapter-5)  
+> * [Download Tars and Compile Source Code](#chapter-6)
+> * [Initialize Database](#chapter-7)  
 
 
 ## 1. <a id="chapter-1"></a> Note Well
@@ -155,19 +157,67 @@ mysql --version
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 source ~/.bashrc
 nvm install v8.11.3
-npm install -g pm2 --registry=https://registry.npm.taobao.org
+npm install -g pm2
 ```
 
 
-## 6. <a id="chapter-6"></a> Configure Mysql for Tars 
+## 6. <a id="chapter-6"></a> Download Tars and Compile Source Code
+download and compile code
+```
+git clone -b arm https://github.com/qiuxin/Tars.git
+cd ${download_path}/Tars
+git submodule update --init --recursive
+cd ${download_path}/Tars/TarsFramework/build
+chmod u+x build.sh 
+./build.sh all
+```
+
+In case you want rebuild 
+```
+./build.sh cleanall  
+./build.sh all 
+```
+
+Update the mysql path if errors occured in the process of compile tars:
+
+Mofified Files:
+```
+/usr/local/TarsFramework/tarscpp/CMakeLists.txt
+/usr/local/TarsFramework/CMakeLists.txt
+```
+
+
+Modified Details from:
+```
+set(MYSQL_DIR_INC  "/usr/local/mysql/include")
+set(MYSQL_DIR_LIB   "/usr/local/mysql/lib")
+```
+to
+```
+set(MYSQL_DIR_INC  "/usr/include/mysql")
+set(MYSQL_DIR_LIB  "/usr/lib64/mysql")
+```
+
+if the forgoing path is still NOT right , use the following command to figure out the rigth path:
+```
+find / -name libmysqlclient.a
+find / -name mysql.h
+```
+
+
+
+## 7. <a id="chapter-7"></a> Initialize Datebase
+
+
+
+### 7.1 Mysql User and Password Setup
 
 
 
 
+## 6. <a id="chapter-6"></a> Initialize Datebase
 
-
-
-#### 4.2.1 Mysql User and Password Setup
+### 6.1 Mysql User and Password Setup
 
 
 
@@ -180,21 +230,7 @@ npm install -g pm2 --registry=https://registry.npm.taobao.org
 
 ## 2.2. Install develop environment for C++  
 
-Download **TarsFramework** source code:
-```  bash
-cd ${source_folder}  
-git clone https://github.com/TarsCloud/TarsFramework.git --recursive  
-```  
-  
-Then change the directory to the build folder:   
-```  bash
-cd ${source_folder}  
-git clone https://github.com/TarsCloud/TarsFramework.git --recursive  
-cd ${source_folder}/TarsFramework/build  
-chmod u+x build.sh  
-./build.sh prepare  
-./build.sh all  
-```  
+
   
 Be aware that the default mysql lib path that Tars use is /usr/local/mysql/ . If mysql is installed in a different path, please modify the files `TarsFramework/CMakeLists.txt` and `TarsFramework/tarscpp/CMakeLists.txt` directory before compiling. (You might change the mysql paths to:"/usr/include/mysql";"/usr/lib64/mysql")  
   
