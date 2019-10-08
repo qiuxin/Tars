@@ -6,8 +6,9 @@
 > * [Install Lib](#chapter-3)  
 > * [Install Mysql](#chapter-4)  
 > * [Install NVM](#chapter-5)  
-> * [Download Tars and Compile Source Code](#chapter-6)
-> * [Initialize Database](#chapter-7)  
+> * [Download and Compile TarsFramework](#chapter-6)
+> * [Install TarsFramework](#chapter-7) 
+> * [Initialize Database](#chapter-8)  
 
 
 ## 1. <a id="chapter-1"></a> Note Well
@@ -161,7 +162,7 @@ npm install -g pm2
 ```
 
 
-## 6. <a id="chapter-6"></a> Download Tars and Compile Source Code
+## 6. <a id="chapter-6"></a> Download and Compile TarsFramework
 download and compile code
 ```
 git clone -b arm https://github.com/qiuxin/Tars.git
@@ -206,8 +207,21 @@ find / -name mysql.h
 
 
 
-## 7. <a id="chapter-7"></a> Initialize Datebase
+## 7. <a id="chapter-7"></a> Install TarsFramework
 
+```
+cd /usr/local/
+mkdir tars
+chown root:root ./tars/
+cd /usr/local/TarsFramework/build/
+./build.sh install
+```
+
+
+
+
+
+## 8. <a id="chapter-8"></a> Initialize Datebase
 
 
 ### 7.1 Mysql User and Password Setup
