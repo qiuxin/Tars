@@ -1,18 +1,21 @@
 [点我查看中文版](Install.zh.md)  
   
 # Content  
-> * [Dependent Environments](#chapter-1)  
-> * [Install develop environment for Tars](#chapter-2)  
-> * [Initialize the db environment for Tars](#chapter-3)  
+> * [Note Well](#chapter-1)  
+> * [Dependent Environments](#chapter-2)  
+> * [Install Lib](#chapter-3)  
+> * [Install Mysql](#chapter-4)  
 > * [Build runtime environment for Tars framework](#chapter-4)  
 
+
+## 1. <a id="chapter-1"></a> Note Well
 This document describes the steps to deploy, run, and test Tars framework.
 
-If you use Tars for production environment, the deployment steps are similar, but you need pay attention to fault-tolerance. You can join us for discussion in the QQ group code 579079160.  
+This is the arm verion install process, some steps are different to X86 platform.
+Make sure you are run Tars on ARM platform prior to follow the instructions itemized below.  
   
-  
-## 1. <a id="chapter-1"></a>Dependent environments  
-  
+## 2. <a id="chapter-2"></a>Dependent environments   
+System : CentOS 7
 Software | Software requirements  
 ------|--------  
 linux kernel version: | 2.6.18 or later (Dependent OS)  
@@ -25,35 +28,46 @@ rapidjson version: | 1.0.2 or later（dependency of C++ framework）
 nvm version: | 0.33.11 or later（Dependent web management system）  
 node version: | 8.11.3 or later（Dependent web management system）  
   
-Hardware requirements: a machine running Linux.  
+Hardware requirements: Arm Server with aarch64.  
   
-### 1.1. Install glibc-devel  
+## 3. <a id="chapter-3"></a> Install Libs 
   
-If you don't have glibc, please install it first.  
-  
-For example, run this command in Centos:  
-``` bash 
-yum install glibc-devel  
+Install all the libs that will be used in the process of intstalltion.
+
 ```  
-  
-### 1.2. Install cmake  
-  
-Cmake is the tool for compile tars.  
-  
-Download cmake-2.8.8 source code, unzip:  
-```  bash
-tar zxvf cmake-2.8.8.tar.gz  
+yum install -y glibc-devel
+yum install -y flex
+yum install -y bison
+yum install -y cmake
+yum install -y ncurses-devel
+yum install -y zlib-devel
+yum install -y perl
+yum install -y wget
+yum install -y net-tools
+yum install -y gcc
+yum install -y gcc-c++
+yum install -y flex
+yum install -y make
+yum install -y git
+yum install -y expect
+yum install -y tar
+yum install -y epel-release
+yum install -y nodejs
+yum install -y npm
+#npm install -g n
+npm i -g pm2
+yum install -y lrzsz
 ```  
-Enter directory:  
-```  bash
-cd cmake-2.8.8  
-```  
-Steps as following(may `sudo root` first)  
-```  bash
-./bootstrap  
-make  
-make install  
-```  
+
+## 4. <a id="chapter-3"></a> Install Mysql
+
+### 4.1 Install mysql via yum
+
+
+### 4.2 Install mysql via mysql  
+
+
+
   
 ### 1.3. Install mysql  
 
