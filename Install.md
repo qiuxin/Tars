@@ -138,12 +138,10 @@ service mysql stop
 Add the mysql lib in the conf file(/etc/ld.so.conf):
 ```
 vim /etc/ld.so.conf  
-
 ```
 add the following line
 ```
 /usr/local/mysql/lib/  
-
 ```
 then run
 ```
