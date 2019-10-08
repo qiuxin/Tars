@@ -42,7 +42,6 @@ yum install -y tar
 yum install -y epel-release
 yum install -y nodejs
 yum install -y npm
-#npm install -g n
 npm i -g pm2
 yum install -y lrzsz
 ```  
@@ -53,10 +52,10 @@ yum install -y lrzsz
 Only MYsql 5.6,5.7 are supported in Tars Platform.
 
 ### 4.1 Install mysql via yum
-Mysql 5.6, 5.7 yum installation are not supported by Oracle yet. It is not avaliale.
+Mysql 5.6, 5.7 yum installation are NOT supported by Oracle yet. It is NOT avaliale.
 
 ### 4.2 Install mysql via source code
-So the only way to install mysql is source code.
+So the ONLY way to install mysql is source code.
 
 #### 4.2.1 Donwload/Install/Compile  
 Donwload/Install/Compile the source code of mysql5.6.
@@ -85,7 +84,6 @@ chown -R mysql:mysql /data/mysql-data /usr/local/mysql/data
 cp support-files/mysql.server /etc/init.d/mysql  
 yum install -y perl-Module-Install.noarch  
 perl scripts/mysql_install_db --user=mysql  
-
 ```
 
 
@@ -118,18 +116,18 @@ sort_buffer_size = 2M
 read_rnd_buffer_size = 2M  
   
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES  
-  
 ```
 
 After that, you can start mysql and stop mysql successfully.
 
 Start mysql  
-```  sql
+```
 service mysql start  
 chkconfig mysql on  
-```  
+```
+
 Stop mysql  
-``` sql
+```
 service mysql stop  
 ```  
 
