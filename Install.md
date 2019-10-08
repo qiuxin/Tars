@@ -251,6 +251,21 @@ sed -i "s/10.120.129.226/${MachineIp}/g" `grep 10.120.129.226 -rl ./*`
 ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 
+
+### 8.1 Setup User and Password(The simplest way, demo recommend)
+add "skip-grant-tables"  in /usr/local/mysql/my.cnf file 
+```
+skip-grant-tables
+```
+
+restart mysql after you modify /usr/local/mysql/my.cnf
+```
+service mysql stop
+service mysql start
+```
+So no more user password check!  Pretty simeple for demo!
+
+
 ### 8.1 Setup User and Password
 
 Establish the new password for mysql
@@ -263,19 +278,19 @@ Establish the new password for mysql
 Login Mysql:
 ```
 mysql -u root -proot@appinside
-
 ```
-
 
 Setup User and Password:
 ```
-mysql> set global validate_password_policy=0;
-mysql> set global validate_password_length=1;
+mysql> set global validate_password_policy=0; (NOT SUPPORT IN Mysql 5.6)
+mysql> set global validate_password_length=1; (NOT SUPPORT IN Mysql 5.6)
 mysql> set password="tars2015";
 mysql> grant all on *.* to 'tars'@'%' identified by 'tars2015' with grant option;
 mysql> grant all on *.* to 'tars'@'localhost' identified by 'tars2015' with grant option;
 mysql> flush privileges;
 ```
+
+
 
 
 
