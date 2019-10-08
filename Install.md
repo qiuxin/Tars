@@ -57,7 +57,7 @@ Mysql 5.6, 5.7 yum installation are NOT supported by Oracle yet. It is NOT avali
 ### 4.2 Install mysql via source code
 So the ONLY way to install mysql is source code.
 
-#### 4.2.1 Donwload/Install/Compile  
+#### 4.2.1 Donwload/Install/Compile Mysql  
 Donwload/Install/Compile the source code of mysql5.6.
 ```
 cd /usr/local
@@ -148,6 +148,23 @@ Check mysql verion to make sure everything goes well.
 ```
 mysql --version
 ```
+
+## 5. <a id="chapter-5"></a> Install NVM
+
+```
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+source ~/.bashrc
+nvm install v8.11.3
+npm install -g pm2 --registry=https://registry.npm.taobao.org
+```
+
+
+## 6. <a id="chapter-6"></a> Configure Mysql for Tars 
+
+
+
+
+
 
 
 #### 4.2.1 Mysql User and Password Setup
