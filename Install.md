@@ -213,7 +213,7 @@ find / -name mysql.h
 cd /usr/local/
 mkdir tars
 chown root:root ./tars/
-cd /usr/local/TarsFramework/build/
+cd ${download_path}/Tars/framework/build/
 ./build.sh install
 ```
 
