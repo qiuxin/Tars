@@ -412,6 +412,8 @@ make tarsquerystat-tar
 make tarsqueryproperty-tar
 ```
 
-
+## 12 Visit web
+Visit IP:3000 in the web:
+![image](https://github.com/qiuxin/Tars/blob/arm/Picture/tarsframe.PNG)
 
 
