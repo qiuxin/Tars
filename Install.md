@@ -402,7 +402,7 @@ systemctl stop firewalld
 systemctl disable firewalld
 ```
 
-## 11. <a id="chapter-11"></a> Compile TarsFramework NoneCore Service
+## 11. <a id="chapter-11"></a> Compile TarsFramework and Deploy NoneCore Service
 ```
 cd ${download_path}/Tars/framework/build
 make tarsstat-tar
