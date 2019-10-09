@@ -418,3 +418,25 @@ Visit IP:3000 in the web:
 ![image](https://github.com/qiuxin/Tars/blob/arm/Picture/tarsframe.PNG)
 
 
+## 13. <a id="chapter-11"></a> Multiple Server Deployment
+create a new folder in new server(the server that is used to deploy tars now)
+```
+mkdir -p /usr/local/tarsfolder
+```
+
+Compress the tars folder in the orgianl server(the server which has already deplpoyed tars successfully)
+```
+cd /usr/local/app
+tar czvf myTars.tar tars
+```
+
+Copy tars folder to new server(the server that is used to deploy tars now)
+```
+cd /usr/local/app
+scp myTars.tar root@${New_Server_IP_Address}://usr/local/tarsfolder
+```
+
+
+
+
+
