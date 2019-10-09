@@ -434,6 +434,7 @@ Copy tars folder to new server(the server that is used to deploy tars now)
 ```
 cd /usr/local/app
 scp myTars.tar root@${New_Server_IP_Address}://usr/local/tarsfolder
+tar xzvf myTars.tar
 ```
 
 
