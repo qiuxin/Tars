@@ -6,11 +6,12 @@ This is the arm version.  The functions are completely the same as Tars X86.
 
 
 ## Compile and Installation 
-Refer to the [TarsArm.md](TarsArm.md).
+Refer to the [Install.md](Install.md).
 
+## Script Installation
+Refer to the Script Install.
 
 ## Submodule
-
 Directory         |Features
 ------------------|----------------
 framework         |Source code implementation of C++ language framework basic service
@@ -24,9 +25,7 @@ web               |manage tars web source implementation
 
 
 ## License
-
 The open-source protocol Tars used is BSD-3-Clause, see [LICENSE.TXT](LICENSE.TXT).
 
 ## Contacts
-
 qiuxincsu@hotmail.com
