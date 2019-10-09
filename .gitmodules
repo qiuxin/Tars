@@ -18,7 +18,7 @@
 	url = https://github.com/TarsCloud/TarsTup
 [submodule "web"]
 	path = web
-	url = https://github.com/TarsCloud/TarsWeb
+	url = https://github.com/qiuxin/TarsWeb
 [submodule "go"]
 	path = go
 	url = https://github.com/TarsCloud/TarsGo
