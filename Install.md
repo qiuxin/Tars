@@ -1,4 +1,4 @@
-# Table of contents(Arm Verion)  
+# Table of contents(Arm Platform)  
 > * [Note Well](#chapter-1)  
 > * [Environments](#chapter-2)  
 > * [Install Lib](#chapter-3)  
