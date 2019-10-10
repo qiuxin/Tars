@@ -518,7 +518,7 @@ Update the locator in tars.tarsregistry.config.conf
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
- locator                     = tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+ locator                     = tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890:tcp -h 10.11.6.11 -p 17890
 ```
 
 Update the dbhost in tars.tarsregistry.config.conf
@@ -544,7 +544,7 @@ Update the locator in tars.tarsregistry.config.conf
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890:tcp -h 10.11.6.11 -p 17890
 ```
 
 Update the dbhost in tars.tarsregistry.config.conf
@@ -570,7 +570,7 @@ Update the locator in tars.tarsnode.config.conf
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890:tcp -h 10.11.6.11 -p 17890
 ```
 
 Start tarsnode Services
