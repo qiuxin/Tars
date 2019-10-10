@@ -421,7 +421,7 @@ Visit IP:3000 in the web:
 ## 13. <a id="chapter-11"></a> Multiple Server Deployment
 Note well:  Tarsweb and TarsPatch services are ONLY avaliable to deploy in one physical server.
 
-### 13.1 Install basic
+### 13.1 Install basic in new server
 Install all the libs that will be used in the process of intstalltion.
 ```
 yum install -y glibc-devel
@@ -473,7 +473,7 @@ chmod u+x build.sh
 ./build.sh all
 ```
 
-### 13.4 Install TarsFramwork
+### 13.4 Install TarsFramwork in new server
 ```
 cd /usr/local/
 mkdir tars
@@ -482,7 +482,7 @@ cd ${download_path}/Tars/framework/build/
 ./build.sh install
 ```
 
-### 13.5 Compile TarsFramework.tgz and Replace IP addres 
+### 13.5 Compile TarsFramework.tgz and Replace IP addres in new server
 Compile
 ```
 cd ${download_path}/Tars/framework/build
@@ -508,7 +508,7 @@ sed -i "s/web.tars.com/${MachineIp}/g" `grep web.tars.com -rl ./*`
 ${MachineIp} is the server's IP address which can grab via ifconfig.
 ```
 
-### 13.6 Start tarsregistry Services
+### 13.6 Start tarsregistry Services in new server
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsregistry/conf/tars.tarsregistry.config.conf
@@ -534,7 +534,7 @@ chmod u+x ./tarsregistry/util/start.sh
 ./tarsregistry/util/start.sh
 ```
 
-### 13.8 Start tarsAdminRegistry Services
+### 13.7 Start tarsAdminRegistry Services in new server
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsAdminRegistry/conf/tars.tarsAdminRegistry.config.conf
@@ -560,16 +560,27 @@ chmod u+x ./tarsAdminRegistry/util/start.sh
 ./tarsAdminRegistry/util/start.sh
 ```
 
+### 13.8 Start tarsnode Services in new server
+Modify Locator of configure file
+```
+vim /usr/local/app/tars/tarsnode/conf/tars.tarsnode.config.conf
+```
 
+Update the locator in tars.tarsnode.config.conf
+- 10.11.6.13 is the New Server IP address.
+- 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
+```
+  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+```
 
-
-### 13.8 Start tarsregistry Services
-
+Start tarsnode Services
+```
+cd /usr/local/app/tars/
+chmod u+x ./tarsnode/util/start.sh
+./tarsnode/util/start.sh
+```
 
 ### 13.9 Start tarsregistry Services
-
-
-### 13.10 Start tarsregistry Services
 
 
 ### 13.3 Version
