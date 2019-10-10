@@ -463,9 +463,15 @@ make install
 ```
 
 ### 13.3 Download/Compile Tars Code in new Server
-
-
-
+Download the mysql source code and compile it
+```
+git clone -b arm https://github.com/qiuxin/Tars.git
+cd ${download_path}/Tars
+git submodule update --init --recursive
+cd ${download_path}/Tars/TarsFramework/build
+chmod u+x build.sh 
+./build.sh all
+```
 
 ### 13.4 Install TarsFramwork
 
