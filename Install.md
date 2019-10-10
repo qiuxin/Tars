@@ -508,11 +508,35 @@ sed -i "s/web.tars.com/${MachineIp}/g" `grep web.tars.com -rl ./*`
 ${MachineIp} is the server's IP address which can grab via ifconfig.
 ```
 
+Modify Locator of configure file
+```
+vim /usr/local/app/tars/tarsregistry/conf/tars.tarsregistry.config.conf
+```
+
+Update the locator in tars.tarsregistry.config.conf
+- 10.11.6.13 is the New Server IP address.
+- 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
+```
+ locator                     = tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+```
+
+Update the dbhost in tars.tarsregistry.config.conf
+- 10.11.6.11 is the master Server IP address in which mysql has already been installed successfully.
+```
+dbhost  = 10.11.6.11
+```
+
+
 Start Tarsframework Services
 ```
 cd /usr/local/app/tars/
-chmod u+x tars_install.sh
-./tars_install.sh
+chmod u+x ./tarsregistry/util/start.sh
+./tarsregistry/util/start.sh
 ```
+
+
+
+
+
 
 ### 13.3 Version
