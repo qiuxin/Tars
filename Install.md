@@ -597,11 +597,11 @@ Modify the locater in tarsAdminRegistry(/usr/local/app/tars/tarsAdminRegistry/co
 locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890
 ```
 
-Modify the locater in tarsnode(/usr/local/app/tars/tarsnode/conf/tars.tarsnode.config.conf)
+Modify the locater in tarsnode(/usr/local/app/tars/tarsnode/util/execute.sh)
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890
+$bin --locator="tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890" --config=/usr/local/app/tars/tarsnode/conf/tars.tarsnode.config.conf &
 ```
 
 
