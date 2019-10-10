@@ -447,17 +447,27 @@ npm i -g pm2
 yum install -y lrzsz
 ```
 
+### 13.2 Download/Compile Mysql Code in new Server
 
-### 13.1 Download/Compile Mysql Code in new Server
+Download the mysql source code and compile it
+```
+cd /usr/local
+wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz
+tar -zxvf mysql-5.6.26.tar.gz
+chown root:root ./mysql-5.6.26
+ln -s /usr/local/mysql-5.6.26 /usr/local/mysql
+cd mysql-5.6.26
+cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
+make
+make install
+```
+
+### 13.3 Download/Compile Tars Code in new Server
 
 
 
-### 13.2 Download/Compile Tars Code in new Server
 
-
-
-
-### 13.3 Install TarsFramwork
+### 13.4 Install TarsFramwork
 
 
 
