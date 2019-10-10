@@ -508,7 +508,7 @@ sed -i "s/web.tars.com/${MachineIp}/g" `grep web.tars.com -rl ./*`
 ${MachineIp} is the server's IP address which can grab via ifconfig.
 ```
 
-### 13.6 Start tarsregistry Services in new server
+### 13.6 Start tarsregistry services in new server
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsregistry/conf/tars.tarsregistry.config.conf
@@ -534,7 +534,7 @@ chmod u+x ./tarsregistry/util/start.sh
 ./tarsregistry/util/start.sh
 ```
 
-### 13.7 Start tarsAdminRegistry Services in new server
+### 13.7 Start tarsAdminRegistry services in new server
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsAdminRegistry/conf/tars.tarsAdminRegistry.config.conf
@@ -560,7 +560,7 @@ chmod u+x ./tarsAdminRegistry/util/start.sh
 ./tarsAdminRegistry/util/start.sh
 ```
 
-### 13.8 Start tarsnode Services in new server
+### 13.8 Start tarsnode services in new server
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsnode/conf/tars.tarsnode.config.conf
