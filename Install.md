@@ -434,7 +434,6 @@ yum install -y wget
 yum install -y net-tools
 yum install -y gcc
 yum install -y gcc-c++
-yum install -y flex
 yum install -y make
 yum install -y git
 yum install -y expect
