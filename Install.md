@@ -474,7 +474,13 @@ chmod u+x build.sh
 ```
 
 ### 13.4 Install TarsFramwork
-
+```
+cd /usr/local/
+mkdir tars
+chown root:root ./tars/
+cd ${download_path}/Tars/framework/build/
+./build.sh install
+```
 
 
 
