@@ -586,21 +586,21 @@ Modify the locater in tarsregistry(/usr/local/app/tars/tarsregistry/conf/tars.ta
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-locator                     = tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890 -h 10.11.6.13 -p 17890
+locator                     = tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890
 ```
 
 Modify the locater in tarsAdminRegistry(/usr/local/app/tars/tarsAdminRegistry/conf/tars.tarsAdminRegistry.config.conf)
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890 -h 10.11.6.13 -p 17890
+locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890
 ```
 
 Modify the locater in tarsnode(/usr/local/app/tars/tarsnode/conf/tars.tarsnode.config.conf)
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
-locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890 -h 10.11.6.13 -p 17890
+locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.11.6.13 -p 17890
 ```
 
 
