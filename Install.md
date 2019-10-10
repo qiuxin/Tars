@@ -482,7 +482,7 @@ cd ${download_path}/Tars/framework/build/
 ./build.sh install
 ```
 
-### 13.5 Start TarsFramework Services
+### 13.5 Compile TarsFramework.tgz and Replace IP addres 
 Compile
 ```
 cd ${download_path}/Tars/framework/build
@@ -508,6 +508,7 @@ sed -i "s/web.tars.com/${MachineIp}/g" `grep web.tars.com -rl ./*`
 ${MachineIp} is the server's IP address which can grab via ifconfig.
 ```
 
+### 13.6 Start tarsregistry Services
 Modify Locator of configure file
 ```
 vim /usr/local/app/tars/tarsregistry/conf/tars.tarsregistry.config.conf
@@ -526,17 +527,49 @@ Update the dbhost in tars.tarsregistry.config.conf
 dbhost  = 10.11.6.11
 ```
 
-
-Start Tarsframework Services
+Start tarsregistry Services
 ```
 cd /usr/local/app/tars/
 chmod u+x ./tarsregistry/util/start.sh
 ./tarsregistry/util/start.sh
 ```
 
+### 13.8 Start tarsAdminRegistry Services
+Modify Locator of configure file
+```
+vim /usr/local/app/tars/tarsAdminRegistry/conf/tars.tarsAdminRegistry.config.conf
+```
+
+Update the locator in tars.tarsregistry.config.conf
+- 10.11.6.13 is the New Server IP address.
+- 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
+```
+  locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.13 -p 17890 -h 10.11.6.11 -p 17890
+```
+
+Update the dbhost in tars.tarsregistry.config.conf
+- 10.11.6.11 is the master Server IP address in which mysql has already been installed successfully.
+```
+  dbhost=10.11.6.11
+```
+
+Start tarsAdminRegistry Services
+```
+cd /usr/local/app/tars/
+chmod u+x ./tarsAdminRegistry/util/start.sh
+./tarsAdminRegistry/util/start.sh
+```
 
 
 
+
+### 13.8 Start tarsregistry Services
+
+
+### 13.9 Start tarsregistry Services
+
+
+### 13.10 Start tarsregistry Services
 
 
 ### 13.3 Version
