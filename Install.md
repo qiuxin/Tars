@@ -38,7 +38,6 @@ yum install -y wget
 yum install -y net-tools
 yum install -y gcc
 yum install -y gcc-c++
-yum install -y flex
 yum install -y make
 yum install -y git
 yum install -y expect
@@ -607,6 +606,13 @@ $bin --locator="tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890:tcp -h 10.
 
 ### 13.10 Reboot the service in "old" server
 
+Get rid of all Tars related process
+```
+ps -aux |grep tars
+kill -9 ${$process_id} 
+```
+
+Start Tars process again
 ```
 cd /usr/local/app/tars
 chmod +x tarsAdminRegistry/util/*.sh
@@ -614,12 +620,6 @@ chmod +x tarsconfig/util/*.sh
 chmod +x tarsnode/util/*.sh
 chmod +x tarspatch/util/*.sh
 chmod +x tarsregistry/util/*.sh
-
-./tarsregistry/util/stop.sh
-./tarsAdminRegistry/util/stop.sh
-./tarsnode/util/stop.sh
-./tarsconfig/util/stop.sh
-./tarspatch/util/stop.sh
 
 ./tarsregistry/util/start.sh
 ./tarsAdminRegistry/util/start.sh
