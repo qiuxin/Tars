@@ -419,23 +419,50 @@ Visit IP:3000 in the web:
 
 
 ## 13. <a id="chapter-11"></a> Multiple Server Deployment
-Compress the tars folder in the orgianl server(the server which has already deplpoyed tars successfully)
+Note well:  Tarsweb and TarsPatch services are ONLY avaliable to deploy in one physical server.
+
+### 13.1 Install basic
+Install all the libs that will be used in the process of intstalltion.
 ```
-cd /usr/local/app
-tar czvf myTars.tar tars
+yum install -y glibc-devel
+yum install -y flex
+yum install -y bison
+yum install -y cmake
+yum install -y ncurses-devel
+yum install -y zlib-devel
+yum install -y perl
+yum install -y wget
+yum install -y net-tools
+yum install -y gcc
+yum install -y gcc-c++
+yum install -y flex
+yum install -y make
+yum install -y git
+yum install -y expect
+yum install -y tar
+yum install -y epel-release
+yum install -y nodejs
+yum install -y npm
+npm i -g pm2
+yum install -y lrzsz
 ```
 
-Copy tars folder to new server(the server that is used to deploy tars now)
-```
-cd /usr/local/app
-scp myTars.tar root@${New_Server_IP_Address}://usr/local
-```
 
-Decompress the tars folder in the new service
-```
-cd /usr/local
-tar xzvf myTars.tar
-```
+### 13.1 Download/Compile Mysql Code in new Server
 
 
 
+### 13.2 Download/Compile Tars Code in new Server
+
+
+
+
+### 13.3 Install TarsFramwork
+
+
+
+
+
+
+
+### 13.3 Version
