@@ -602,3 +602,27 @@ Modify the locater in tarsnode(/usr/local/app/tars/tarsnode/conf/tars.tarsnode.c
 ```
 locator=tars.tarsregistry.QueryObj@tcp -h 10.11.6.11 -p 17890 -h 10.11.6.13 -p 17890
 ```
+
+
+### 13.10 Reboot the service in "old" server
+
+```
+cd /usr/local/app/tars
+chmod +x tarsAdminRegistry/util/*.sh
+chmod +x tarsconfig/util/*.sh
+chmod +x tarsnode/util/*.sh
+chmod +x tarspatch/util/*.sh
+chmod +x tarsregistry/util/*.sh
+
+./tarsregistry/util/stop.sh
+./tarsAdminRegistry/util/stop.sh
+./tarsnode/util/stop.sh
+./tarsconfig/util/stop.sh
+./tarspatch/util/stop.sh
+
+./tarsregistry/util/start.sh
+./tarsAdminRegistry/util/start.sh
+./tarsnode/util/start.sh
+./tarsconfig/util/start.sh
+./tarspatch/util/start.sh
+```
