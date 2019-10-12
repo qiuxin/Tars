@@ -480,7 +480,7 @@ cd ${download_path}/Tars/framework/build/
 ./build.sh install
 ```
 
-### 13.5 Compile TarsFramework.tgz and Replace IP addres in new server
+### 13.5 Compile TarsFramework.tgz and Replace IP address in new server
 Compile
 ```
 cd ${download_path}/Tars/framework/build
