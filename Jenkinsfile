@@ -31,7 +31,6 @@ pipeline {
         stage('CompileMysql') {
             steps {
                 echo 'CompileMysql'
-                sh 'cd /usr/local'
                 // /root/.jenkins/workspace/My_Pipeline_arm
                 sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'  
                 sh 'tar -zxvf mysql-5.6.26.tar.gz -C /usr/local'
@@ -43,14 +42,23 @@ pipeline {
                     sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
                     sh 'make'
                     sh 'make install'
-                    echo 'CompileMysql123'
                 }
             }
         }
-        stage('CompipleTars') {
+        stage('ConfigMysql') {
             steps {
-                echo 'CompipleTars'
-                //sh 'compile tars ...' 
+                echo 'ConfigureMysql'
+                dir('/usr/local/mysql')
+                {
+                    sh 'useradd mysql'  
+                    sh 'rm -rf /usr/local/mysql/data'  
+                    sh 'mkdir -p /data/mysql-data'
+                    sh 'ln -s /data/mysql-data /usr/local/mysql/data'  
+                    sh 'chown -R mysql:mysql /data/mysql-data /usr/local/mysql/data'  
+                    sh 'cp support-files/mysql.server /etc/init.d/mysql'
+                    sh 'yum install -y perl-Module-Install.noarch'
+                    sh 'perl scripts/mysql_install_db --user=mysql'
+                }  
             }
         }
     }
