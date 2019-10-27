@@ -4,8 +4,9 @@ pipeline {
         stage('InstallBasicLib') {
             steps {
                 echo 'Building - Install Basic Lib'
-                sh 'echo Build Module1 stage ...'
-            }
+                sh 'echo install -y glibc-devel...'
+                sh 'yum install -y glibc-devel'
+          }
         }
         stage('Test') {
             steps {
