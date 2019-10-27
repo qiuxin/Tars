@@ -70,5 +70,23 @@ pipeline {
             }
             echo 'startMysql successfully'
         }
+
+        stage('InstallNVM') {
+            steps {
+                sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'  
+                sh 'source ~/.bashrc'
+                sh 'nvm install v8.11.3'
+                sh 'npm install -g pm2'  
+            }
+            echo 'InstallNVM successfully'
+        }
+
+
+
+
+
+
+
+
     }
 }
