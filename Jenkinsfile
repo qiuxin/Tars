@@ -41,9 +41,9 @@ pipeline {
                 dir('/usr/local/mysql-5.6.26')
                 //sh 'cd /usr/local/mysql-5.6.26'
                 sh 'pwd'
-                sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
-                sh 'make'
-                sh 'make install'
+                //sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
+                //sh 'make'
+                //sh 'make install'
             }
         }
         stage('CompipleTars') {
