@@ -43,6 +43,7 @@ pipeline {
                 }
             }
         }
+
         stage('ConfigMysql') {
             steps {
                 dir('/usr/local/mysql')
@@ -59,6 +60,7 @@ pipeline {
                 }  
                 echo 'configureMysql successfully'
             }
+        }
         //after this stage, configre /usr/local/mysql/my.cnf according to https://github.com/qiuxin/Tars/blob/arm/Install.md
         //after this stage, modify /etc/ld.so.conf and set environment path according to https://github.com/qiuxin/Tars/blob/arm/Install.md
         //stage('startMysql') {
