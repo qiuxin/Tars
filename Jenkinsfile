@@ -1,18 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('InstallBasicLib') {
             steps {
                 echo 'Building - Install Basic Lib'
                 sh 'echo Build Module1 stage ...'
-            }
-            steps {
-                echo 'Building - Install Mysql'
-                sh 'echo Build Install Mysql ...'
-            }
-            steps {
-                echo 'Building - Compile'
-                
             }
         }
         stage('Test') {
