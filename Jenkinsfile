@@ -31,12 +31,10 @@ pipeline {
         stage('CompileMysql') {
             steps {
                 echo 'CompileMysql'
-                // /root/.jenkins/workspace/My_Pipeline_arm
                 sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'  
                 sh 'tar -zxvf mysql-5.6.26.tar.gz -C /usr/local'
                 sh 'chown root:root /usr/local/mysql-5.6.26'
                 //sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
-                //sh 'cd /usr/local/mysql-5.6.26'
                 dir('/usr/local/mysql-5.6.26')
                 {
                     sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
@@ -47,7 +45,6 @@ pipeline {
         }
         stage('ConfigMysql') {
             steps {
-                echo 'ConfigureMysql'
                 dir('/usr/local/mysql')
                 {
                     sh 'useradd mysql'  
@@ -58,8 +55,20 @@ pipeline {
                     sh 'cp support-files/mysql.server /etc/init.d/mysql'
                     sh 'yum install -y perl-Module-Install.noarch'
                     sh 'perl scripts/mysql_install_db --user=mysql'
+                    
                 }  
+                echo 'configureMysql successfully'
             }
+
+        //after this stage, configre /usr/local/mysql/my.cnf according to https://github.com/qiuxin/Tars/blob/arm/Install.md
+        //after this stage, modify /etc/ld.so.conf and set environment path according to https://github.com/qiuxin/Tars/blob/arm/Install.md
+        stage('startMysql') {
+            steps {
+                sh 'service mysql start'  
+                sh 'chkconfig mysql on'
+                sh 'mysql --version'  
+            }
+            echo 'startMysql successfully'
         }
     }
 }
