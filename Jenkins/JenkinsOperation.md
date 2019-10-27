@@ -1,0 +1,42 @@
+
+# Table of contents(Arm Platform)  
+> * [Note Well](#chapter-1)  
+> * [Environments](#chapter-2)  
+> * [Download and Install Jenkins ](#chapter-3)  
+> * [Install Mysql](#chapter-4)  
+> * [Install NVM](#chapter-5)  
+> * [Download and Compile TarsFramework](#chapter-6)
+> * [Install TarsFramework](#chapter-7) 
+> * [Initialize Database](#chapter-8)  
+> * [Start TarsFramework Services](#chapter-9)  
+> * [Install Tarsweb](#chapter-10)  
+> * [Compile TarsFramework NoneCore Service](#chapter-11)  
+> * [Visit web](#chapter-12)  
+
+## 1. <a id="chapter-1"></a> Note Well
+This document describes the process of Jenkins CI.
+
+## 2. <a id="chapter-2"></a> Environments   
+System : CentOS 7  
+Hardware requirements: aarch64 Arm Server  
+  
+## 3. <a id="chapter-3"></a> Download and Install Jenkins 
+
+
+
+```  
+yum install -y glibc-devel
+yum install -y flex
+yum install -y bison
+yum install -y cmake
+```  
+
+Start Jenkins
+```  
+java -jar jenkins.war --httpPort=8080. &
+```  
+
+Open the website in your PC:
+```  
+http://localhost:8080.
+```  
