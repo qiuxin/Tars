@@ -25,6 +25,10 @@ Download Jenkins
 ```  
 wget http://mirror.serverion.com/jenkins/war-stable/2.190.1/jenkins.war
 ```  
+Install Java
+```
+sudo yum install -y java-1.8.0-openjdk-devel
+```
 
 Start Jenkins
 ```  
