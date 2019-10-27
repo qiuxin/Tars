@@ -21,14 +21,9 @@ System : CentOS 7
 Hardware requirements: aarch64 Arm Server  
   
 ## 3. <a id="chapter-3"></a> Download and Install Jenkins 
-
-
-
+Download Jenkins
 ```  
-yum install -y glibc-devel
-yum install -y flex
-yum install -y bison
-yum install -y cmake
+wget http://mirror.serverion.com/jenkins/war-stable/2.190.1/jenkins.war
 ```  
 
 Start Jenkins
