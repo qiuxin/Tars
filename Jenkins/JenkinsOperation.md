@@ -41,5 +41,5 @@ http://localhost:8080.
 ``` 
 Install the jenkins step by step via the website gudience.
 
-## 4. <a id="chapter-3"></a> Download and Install Jenkins 
-
+## 4. <a id="chapter-3"></a> Connect Jenkins to Github
+https://wordpress.com/post/qiuxincsu.wordpress.com/685
