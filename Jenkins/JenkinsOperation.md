@@ -38,4 +38,8 @@ java -jar jenkins.war --httpPort=8080 &
 Open the website in your PC:
 ```  
 http://localhost:8080.
-```  
+``` 
+Install the jenkins step by step via the website gudience.
+
+## 4. <a id="chapter-3"></a> Download and Install Jenkins 
+
