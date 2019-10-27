@@ -49,7 +49,7 @@ pipeline {
         stage('CompipleTars') {
             steps {
                 echo 'CompipleTars'
-                sh 'compile tars ...' 
+                //sh 'compile tars ...' 
             }
         }
     }
