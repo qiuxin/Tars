@@ -31,11 +31,10 @@ pipeline {
         stage('InstallMysql5.6') {
             steps {
                 echo 'InstallMysql5.6'
-                sh 'mkdir /usr/local'
+                sh 'cd /usr/local'
                 // /root/.jenkins/workspace/My_Pipeline_arm
-                sh 'cd ./usr/local'
                 sh 'pwd'
-                //sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'
+                sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'
                 //sh 'tar -zxvf mysql-5.6.26.tar.gz'
                 //sh 'chown root:root ./mysql-5.6.26'
                 //sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
