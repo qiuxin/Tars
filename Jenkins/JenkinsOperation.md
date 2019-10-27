@@ -32,7 +32,7 @@ sudo yum install -y java-1.8.0-openjdk-devel
 
 Start Jenkins
 ```  
-java -jar jenkins.war --httpPort=8080. &
+java -jar jenkins.war --httpPort=8080 &
 ```  
 
 Open the website in your PC:
