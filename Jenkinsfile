@@ -32,15 +32,16 @@ pipeline {
             steps {
                 echo 'InstallMysql5.6'
                 sh 'cd /usr/local'
-                sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'
-                sh 'tar -zxvf mysql-5.6.26.tar.gz'
-                sh 'chown root:root ./mysql-5.6.26'
-                //sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
-                sh 'cd /usr/local/mysql-5.6.26'
                 sh 'pwd'
-                sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
-                sh 'make'
-                sh 'make install'
+                //sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'
+                //sh 'tar -zxvf mysql-5.6.26.tar.gz'
+                //sh 'chown root:root ./mysql-5.6.26'
+                //sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
+                //sh 'cd /usr/local/mysql-5.6.26'
+                //sh 'pwd'
+                //sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
+                //sh 'make'
+                //sh 'make install'
             }
         }
         stage('CompipleTars') {
