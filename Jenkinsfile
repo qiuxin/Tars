@@ -37,12 +37,12 @@ pipeline {
                 sh 'pwd'  
                 sh 'tar -zxvf mysql-5.6.26.tar.gz -C /usr/local'
                 sh 'chown root:root /usr/local/mysql-5.6.26'
-                //sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
-                //sh 'cd /usr/local/mysql-5.6.26'
-                //sh 'pwd'
-                //sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
-                //sh 'make'
-                //sh 'make install'
+                sh 'ln -s /usr/local/mysql-5.6.26 /usr/local/mysql'
+                sh 'cd /usr/local/mysql-5.6.26'
+                sh 'pwd'
+                sh '/usr/local/mysql-5.6.26/cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
+                sh '/usr/local/mysql-5.6.26/make'
+                sh '/usr/local/mysql-5.6.26/make install'
             }
         }
         stage('CompipleTars') {
