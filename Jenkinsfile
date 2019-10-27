@@ -61,24 +61,27 @@ pipeline {
                 echo 'configureMysql successfully'
             }
         }
-        //after this stage, configre /usr/local/mysql/my.cnf according to https://github.com/qiuxin/Tars/blob/arm/Install.md
-        //after this stage, modify /etc/ld.so.conf and set environment path according to https://github.com/qiuxin/Tars/blob/arm/Install.md
-        //stage('startMysql') {
-        //    steps {
-        //        sh 'service mysql start'  
-        //        sh 'chkconfig mysql on'
-        //        sh 'mysql --version'  
-        //    }
-        //    echo 'startMysql successfully'
-        //}
-        //stage('InstallNVM') {
-        //    steps {
-        //        sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'  
-        //        sh 'source ~/.bashrc'
-        //        sh 'nvm install v8.11.3'
-        //        sh 'npm install -g pm2'  
-        //    }
-        //    echo 'InstallNVM successfully'
-        //}
+            //after this stage, configre /usr/local/mysql/my.cnf according to https://github.com/qiuxin/Tars/blob/arm/Install.md
+            //after this stage, modify /etc/ld.so.conf and set environment path according to https://github.com/qiuxin/Tars/blob/arm/Install.md
+        stage('startMysql') {
+            steps {
+                    sh 'service mysql start'  
+                    sh 'chkconfig mysql on'
+                    sh 'mysql --version'
+                }
+            }
+
+        stage('InstallNVM') {
+                steps {
+                    sh 'wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash'  
+                    sh 'source ~/.bashrc'
+                    sh 'nvm install v8.11.3'
+                    sh 'npm install -g pm2'  
+                }
+            }
+
+
+
+            
     }
 }
