@@ -28,9 +28,9 @@ pipeline {
                 sh 'yum install -y lrzsz'
           }
         }
-        stage('InstallMysql5.6') {
+        stage('CompileMysql') {
             steps {
-                echo 'InstallMysql5.6'
+                echo 'CompileMysql'
                 sh 'cd /usr/local'
                 // /root/.jenkins/workspace/My_Pipeline_arm
                 sh 'wget https://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.26.tar.gz'  
@@ -42,6 +42,7 @@ pipeline {
                 sh 'cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.26 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DMYSQL_USER=mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci'
                 sh 'make'
                 sh 'make install'
+                echo 'CompileMysql123'
             }
         }
         stage('CompipleTars') {
