@@ -164,7 +164,7 @@ export PATH
 ```
 then run
 ```
-source
+source /etc/profile
 ```
 Check mysql verion to make sure everything goes well. 
 ```
