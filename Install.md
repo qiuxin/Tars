@@ -275,9 +275,14 @@ mysql> set global validate_password_length=1;
 mysql> set password="tars2015"; (Not work, SET old_passwords = 0,1,2; does not help! )
 mysql> grant all on *.* to 'tars'@'%' identified by 'tars2015' with grant option;
 mysql> grant all on *.* to 'tars'@'localhost' identified by 'tars2015' with grant option;
+mysql> grant all on *.* to 'tars'@'${hostname}' identified by 'tars2015' with grant option;
 mysql> flush privileges;
 ```
-
+To get your hostname in CentOS7,
+```
+# hostname
+ip-32-31-7-45.us-east-6.compute.internal
+```
 
 ### 8.2 Create Datebase
 Login Mysql:
