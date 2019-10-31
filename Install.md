@@ -199,7 +199,7 @@ In case you want rebuild
 ./build.sh all 
 ```
 
-Update the mysql path if errors occured in the process of compile tars:
+Update the mysql path if errors occured in the process of compiling Tars:
 
 Mofified Files:
 ```
