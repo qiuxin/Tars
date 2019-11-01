@@ -382,8 +382,8 @@ npm run prd
 
 Enter the folder and log in mysql
 ```
-cd ${download_path}/Tars/web/sql
-mysql -u root -proot@appinside
+cd ${download_path}/TarsWeb/sql
+mysql -u root -ptars2015
 ```
 
 Import the table
