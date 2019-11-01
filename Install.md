@@ -257,7 +257,7 @@ ${MachineIp} is local IP address. Check IP address via ipconfig.
 
 Establish the new password for mysql
 ```
-/usr/local/mysql
+cd /usr/local/mysql
 ./bin/mysqladmin -u root password 'root@appinside'
 ```
 
