@@ -258,13 +258,14 @@ ${MachineIp} is local IP address. Check IP address via ipconfig.
 Establish the new password for mysql
 ```
 cd /usr/local/mysql
-./bin/mysqladmin -u root password 'root@appinside'
+service mysql start
+./bin/mysqladmin -u root password 'tars2015'
 ```
 
 
 Login Mysql:
 ```
-mysql -u root -proot@appinside
+mysql -u root -ptars2015
 ```
 
 Setup User and Password:
@@ -287,7 +288,7 @@ ip-32-31-7-45.us-east-6.compute.internal
 ### 8.2 Create Datebase
 Login Mysql:
 ```
-mysql -u root -proot@appinside
+mysql -u root -ptars2015
 ```
 
 create datebases
@@ -313,7 +314,7 @@ cd ${download_path}/Tars/framework/sql
 
 Login Mysql:
 ```
-mysql -u root -proot@appinside
+mysql -u root -ptars2015
 ```
 
 Import datebases tables:
