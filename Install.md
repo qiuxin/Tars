@@ -544,7 +544,7 @@ Modify Locator of configure file
 vim /usr/local/app/tars/tarsAdminRegistry/conf/tars.tarsAdminRegistry.config.conf
 ```
 
-Update the locator in tars.tarsregistry.config.conf
+Update the locator in tars.tarsAdminRegistry.config.conf
 - 10.11.6.13 is the New Server IP address.
 - 10.11.6.11 is the master Server IP address in which Tars has already been installed successfully.
 ```
