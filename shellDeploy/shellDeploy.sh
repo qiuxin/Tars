@@ -61,7 +61,7 @@ yum install -y yum-utils
 npm i -g pm2
 yum install -y lrzsz
 echo "Finish basic tool installation">>$CodePath/Tars/shellDeploy/deploy_log
-
+echo "Finish basic tool installation"
 
 ## 安装mysql 5.7
 ## install mysql 5.7
@@ -72,6 +72,7 @@ yum-config-manager --enable mysql57-community
 yum install -y mysql-community-server
 yum install -y mysql-devel
 echo "Finish mysql5.7 installation">>$CodePath/Tars/shellDeploy/deploy_log
+echo "Finish mysql5.7 installation"
 
 #disable password for mysql
 #echo "# disable password">>/etc/my.cnf
@@ -84,7 +85,7 @@ systemctl start mysqld.service
 systemctl enable mysqld.service
 systemctl status mysqld.service
 echo "start mysql5.7 ...">>$CodePath/Tars/shellDeploy/deploy_log
-
+echo "start mysql5.7 ..."
 
 ## 安装nvm
 ## install nvm
@@ -93,7 +94,7 @@ source ~/.bashrc
 nvm install v8.11.3
 npm install -g pm2 --registry=https://registry.npm.taobao.org
 echo "install nvm && pm2">>$CodePath/Tars/shellDeploy/deploy_log
-
+echo "install nvm && pm2"
 
 ## 编译Tars框架代码
 ## compile Tars framework
@@ -108,7 +109,7 @@ find . -name 'CMakeLists.txt' | xargs perl -pi -e 's|/usr/local/mysql/lib|/usr/l
 cd $CodePath/Tars/framework/build
 ./build.sh all
 echo "Finish framework compilation">>$CodePath/Tars/shellDeploy/deploy_log
-
+echo "Finish framework compilation"
 
 ## Tars安装
 ## Install Tars
@@ -118,6 +119,7 @@ chown root:root ./tars/
 cd $CodePath/Tars/framework/build
 ./build.sh install
 echo "Finish framework installation">>$CodePath/Tars/shellDeploy/deploy_log
+echo "Finish framework installation"
 #fi
 
 ##配置Mysql参数
@@ -129,6 +131,7 @@ checkfile=$CodePath/Tars/framework/sql/mysqlConfig.sh
 if [  -f "$checkfile" ]; then 
 rm -rf $CodePath/Tars/framework/sql/mysqlConfig.sh
 echo "delete previous file, copy an new file">>$CodePath/Tars/shellDeploy/deploy_log
+echo "delete previous file, copy an new file"
 fi 
 
 cp $CodePath/Tars/shellDeploy/mysqlConfig.sh  $CodePath/Tars/framework/sql 
@@ -153,9 +156,11 @@ echo "Temp Password:"$TempPassword>>$CodePath/Tars/shellDeploy/deploy_log
 ./mysqlConfig.sh root $TempPassword
 if [ $? -ne 0 ]; then
     echo "config mysql database for tars framework failed">>$CodePath/Tars/shellDeploy/deploy_log
+    echo "config mysql database for tars framework failed"
     exit
 else
     echo "config mysql database for tars framework successfully">>$CodePath/Tars/shellDeploy/deploy_log
+    echo "config mysql database for tars framework successfully"
 fi
 
 
@@ -180,8 +185,8 @@ sed -i "s/web.tars.com/$MachineIp/g" `grep web.tars.com -rl ./*`
 cd /usr/local/app/tars/
 chmod u+x tars_install.sh
 ./tars_install.sh
-echo "Finish tars framework service installatin and pull">>$CodePath/Tars/shellDeploy/deploy_log
-
+echo "Finish tars framework service installation and pull">>$CodePath/Tars/shellDeploy/deploy_log
+echo "Finish tars framework service installation and pull"
 
 ##配置tarsweb数据库以及表项
 ##Config Tarsweb database
@@ -202,21 +207,26 @@ cd $CodePath/Tars/web/sql
 ./importTarsWebSql.sh root $MysqlDefaultPassword
 if [ $? -ne 0 ]; then
     echo "config mysql database for web failed">>$CodePath/Tars/shellDeploy/deploy_log
+    echo "config mysql database for web failed"
     exit
 else
     echo "config mysql database for web successfully">>$CodePath/Tars/shellDeploy/deploy_log
+    echo "config mysql database for web successfully"
 fi
-
-cd $CodePath/Tars/web/
-pm2 start 0
-echo "start tars web">>$CodePath/Tars/shellDeploy/deploy_log
 
 ##关闭防火墙
 ##shutdown firewall
+echo "check firewall status and shutdown firewall"
 service firewalld status
 systemctl stop firewalld
 systemctl disable firewalld
 echo "shutdown and disable firewall">>$CodePath/Tars/shellDeploy/deploy_log
+echo "shutdown and disable firewall"
+
+cd $CodePath/Tars/web/
+pm2 start 0
+echo "start tars web">>$CodePath/Tars/shellDeploy/deploy_log
+echo "start tars web"
 
 ##非框架核心服务编译和发布
 ##None Core Service Compiple
@@ -228,3 +238,4 @@ make tarslog-tar
 make tarsquerystat-tar
 make tarsqueryproperty-tar
 echo "compile none-core services of framework">>$CodePath/Tars/shellDeploy/deploy_log
+echo "compile none-core services of framework"
