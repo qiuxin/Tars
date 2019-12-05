@@ -91,7 +91,8 @@ echo "start mysql5.7 ...">>$CodePath/Tars/shellDeploy/deploy_log
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 source ~/.bashrc
 nvm install v8.11.3
-npm install -g pm2 --registry=https://registry.npm.taobao.org
+#npm install -g pm2 --registry=https://registry.npm.taobao.org
+npm install -g pm2
 echo "install nvm && pm2">>$CodePath/Tars/shellDeploy/deploy_log
 
 
@@ -191,7 +192,8 @@ sed -i "s/registry.tars.com/$MachineIp/g" config/tars.conf
 
 ## 安装tarsweb使用软件
 ## install tarsweb software
-npm install --registry=https://registry.npm.taobao.org
+#npm install --registry=https://registry.npm.taobao.org
+npm install
 npm run prd
 ##创建log日志目录
 ## create log folder
